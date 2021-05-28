@@ -25,7 +25,10 @@
 ; (p ↔ q) ∧ (q → r) ∧ ¬(¬r → ¬p)
 (define f2 (&& (<=> p q) (=> q r) (! (=> (! r) (! q)))))
 
+(define f3 (&& (|| p q) (|| (! p) (! q))))
+
 (check-equal? (classify f0) 'CONTINGENCY)
 (check-equal? (classify f1) 'TAUTOLOGY)
 (check-equal? (classify f2) 'CONTRADICTION)
+(check-equal? (classify f3) 'CONTINGENCY)
 
